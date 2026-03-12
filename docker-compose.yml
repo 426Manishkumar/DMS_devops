@@ -1,0 +1,29 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: dms-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  server:
+    build: ./server
+    container_name: dms-server
+    ports:
+      - "5001:5000"
+    env_file:
+      - ./server/.env
+    depends_on:
+      - mongo
+
+  client:
+    build: ./client
+    container_name: dms-client
+    ports:
+      - "8080:80"
+    depends_on:
+      - server
+
+volumes:
+  mongo_data:
