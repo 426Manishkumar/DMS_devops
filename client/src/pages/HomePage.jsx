@@ -10,6 +10,7 @@ import PageShell from "../components/common/PageShell";
 function HomePage() {
   return (
     <PageShell>
+      <h1 style={{textAlign:"center"}}>DevOps CI/CD Pipeline Working 🚀</h1>
       <HeroSection />
       <AboutSection />
       <PerformancesSection />
